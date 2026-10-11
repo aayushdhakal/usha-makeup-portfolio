@@ -1,36 +1,54 @@
-# Usha Makeup and Nails
+# Usha Makeup and Nails – portfolio
 
-Public portfolio site for the New Baneshwor studio.
+Public portfolio site. Built as a static Next export, served by Express on cPanel Passenger — same deploy style as `usha-makeup`.
 
-## Local setup
-
-```bash
-npm ci
-npm run dev
+```
+app.js          Passenger startup file (listens on process.env.PORT)
+out/            built static site  ← commit this after every build
+public/         source images/fonts
+app/            Next.js pages (source)
 ```
 
-## Fix 503 on shared hosting
+> **Built files are committed on purpose.** The server never runs `next build` — it only needs
+> `npm install --omit=dev` and a restart. Always `npm run build` locally before deploying.
 
-The site is a **static export**. Runtime only needs `server.js` + the `out` folder.
-
-### Option A — Node app (recommended if panel uses Node)
-
-1. Startup file: `server.js`
-2. Node 18+ (20+ preferred)
-3. In the app folder:
+## Local
 
 ```bash
-npm ci
+npm install
+npm run dev      # edit pages
+npm run build    # writes out/
+npm start        # serve out/ via app.js
+```
+
+## Deploy to Bisup (cPanel → Setup Node.js App)
+
+| Setting | Value |
+| --- | --- |
+| Node.js version | **22.x** (same as usha-makeup — never 18) |
+| Application mode | Production |
+| Application root | folder that contains `app.js` (this repo root) |
+| Application URL | your domain (path empty) |
+| Application startup file | **`app.js`** |
+
+Do **not** set `PORT` — Passenger provides it.
+
+### On the server
+
+```bash
+# enter the Node virtualenv from the Setup Node.js App page, then:
+npm install --omit=dev
+mkdir -p tmp && touch tmp/restart.txt
+```
+
+Or use **Run NPM Install** + **Restart** in the Node.js App UI.
+
+### Update flow
+
+```bash
+# laptop
 npm run build
-npm start
+git add -A && git commit -m "Build portfolio" && git push
+
+# server: Git pull, then Restart (or touch tmp/restart.txt)
 ```
-
-4. Restart the Node app  
-5. Confirm `out/index.html` exists after build
-
-### Option B — No Node (most reliable)
-
-1. Run `npm ci && npm run build` locally
-2. Upload **everything inside** `out/` into `public_html`
-3. Also upload `.htaccess`
-4. Turn off / remove the Node.js app for this domain

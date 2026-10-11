@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" role="img" aria-label="Mehendi photo coming soon">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#5a354a"/>
+      <stop offset="1" stop-color="#2a1c2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="900" fill="url(#background)"/>
+  <rect x="42" y="42" width="716" height="816" fill="none" stroke="#d8b5bd" stroke-opacity=".55"/>
+  <path d="M-70 550 C145 385 227 548 406 414 C548 307 639 352 863 206 M-50 662 C140 475 252 640 402 505 C568 361 666 470 865 302" fill="none" stroke="#c68d9f" stroke-opacity=".24" stroke-width="3"/>
+  <circle cx="665" cy="175" r="124" fill="#b88b9e" fill-opacity=".1"/>
+  <circle cx="400" cy="440" r="115" fill="none" stroke="#d8b5bd" stroke-opacity=".55" stroke-width="2"/>
+  <path d="M285 440h230M400 325v230M320 360l160 160M480 360 320 520" fill="none" stroke="#d8b5bd" stroke-opacity=".3" stroke-width="2"/>
+</svg>

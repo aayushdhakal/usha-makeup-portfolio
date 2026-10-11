@@ -11,10 +11,8 @@
 # testing
 /coverage
 
-# next.js
+# next.js build cache (committed export lives in /out)
 /.next/
-# Keep /out ignored locally; build it on the server (or upload after npm run build)
-/out/
 
 # misc
 .DS_Store

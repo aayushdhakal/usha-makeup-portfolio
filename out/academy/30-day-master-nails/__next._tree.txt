@@ -1,0 +1,5 @@
+:HL["/_next/static/chunks/2mzbzsbw6d1me.css","style"]
+:HL["https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css","style"]
+:HL["https://cdn-uicons.flaticon.com/4.0.0/uicons-brands/css/uicons-brands.css","style"]
+:HL["/usha-logo-white.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"academy","param":null,"prefetchHints":4192,"slots":{"children":{"name":"slug","param":{"type":"d","key":"30-day-master-nails","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"HHmxsRPlR6Hmam7BW3jTt"}
