@@ -13,6 +13,7 @@
 
 # next.js
 /.next/
+# Keep /out ignored locally; build it on the server (or upload after npm run build)
 /out/
 
 # misc
