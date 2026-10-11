@@ -1,10 +1,20 @@
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
-import { join, extname, normalize } from "node:path";
+import { join, extname, normalize, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { existsSync } from "node:fs";
 
 const port = Number.parseInt(process.env.PORT || "3000", 10);
-const root = fileURLToPath(new URL("./out", import.meta.url));
+const rootCandidates = [
+  join(process.cwd(), "out"),
+  fileURLToPath(new URL("./out", import.meta.url)),
+];
+const root = rootCandidates.find((dir) => existsSync(join(dir, "index.html")));
+
+if (!root) {
+  console.error("Missing out/index.html. Run: npm run build");
+  process.exit(1);
+}
 
 const types = {
   ".html": "text/html; charset=utf-8",
@@ -27,22 +37,37 @@ const types = {
 };
 
 function safePath(urlPath) {
-  const decoded = decodeURIComponent((urlPath || "/").split("?")[0]);
-  const cleaned = normalize(decoded).replace(/^(\.\.[/\\])+/, "");
-  return join(root, cleaned);
+  const decoded = decodeURIComponent((urlPath || "/").split("?")[0] || "/");
+  let relative = normalize(decoded).replace(/^(\.\.[/\\])+/, "");
+  if (relative === "/" || relative === "\\" || relative === "." || relative === "") {
+    return root;
+  }
+  relative = relative.replace(/^[/\\]+/, "");
+  const absolute = join(root, relative);
+  if (!absolute.startsWith(root + sep) && absolute !== root) {
+    return root;
+  }
+  return absolute;
 }
 
 async function resolveFile(urlPath) {
   let filePath = safePath(urlPath);
   try {
     const info = await stat(filePath);
-    if (info.isDirectory()) filePath = join(filePath, "index.html");
-    else return filePath;
+    if (info.isDirectory()) {
+      filePath = join(filePath, "index.html");
+      await stat(filePath);
+      return filePath;
+    }
+    return filePath;
   } catch {
-    if (!extname(filePath)) filePath = `${filePath}.html`;
+    if (!extname(filePath)) {
+      const withHtml = `${filePath}.html`;
+      await stat(withHtml);
+      return withHtml;
+    }
+    throw new Error("missing");
   }
-  await stat(filePath);
-  return filePath;
 }
 
 createServer(async (req, res) => {
@@ -65,5 +90,5 @@ createServer(async (req, res) => {
     }
   }
 }).listen(port, "0.0.0.0", () => {
-  console.log(`Serving ./out on 0.0.0.0:${port}`);
+  console.log(`Serving ${root} on 0.0.0.0:${port}`);
 });
