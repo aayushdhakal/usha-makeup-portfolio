@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "../vendor/shadcn-tailwind-4.13.0.css";
+@import "./styles/shadcn-tailwind-4.13.0.css";
 
 @font-face { font-family:"Bricolage Grotesque"; src:url('/fonts/BricolageGrotesque-Variable.ttf') format('truetype'); font-style:normal; font-weight:200 800; font-display:swap; }
 
