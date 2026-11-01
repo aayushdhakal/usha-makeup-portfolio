@@ -893,3 +893,67 @@ html { scroll-behavior:smooth; }
 
 .academy-course-actions { display:flex; margin:0 0 24px; }
 @media(max-width:540px) { .academy-course-actions a { width:100%; text-align:center; } }
+
+/* Website booking uses the same BS/AD input pattern as OS. */
+.public-booking-date { max-width:580px; border:1px solid #dfd2d9; border-radius:14px; padding:16px; background:#fffdfb; }
+.public-booking-date-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.public-booking-date-heading>span { font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:#796973; }
+.public-booking-date-heading>div { display:flex; padding:3px; background:#f0e8ec; border-radius:8px; }
+.public-booking-date-heading button { padding:5px 13px; border:0; border-radius:6px; cursor:pointer; font-size:13px; }
+.public-booking-date-heading button[aria-pressed="true"] { background:#fff; color:#63324d; box-shadow:0 1px 4px #4b2b3e14; }
+.public-booking-bs-fields { display:grid; grid-template-columns:1fr 1.4fr .8fr; gap:8px; }
+.public-booking-bs-fields select { min-width:0; width:100%; border:1px solid #dfd2d9; border-radius:9px; padding:11px 8px; background:#fffdfb; color:#2c222c; }
+.booking-panel-success { display:grid; place-items:center; min-height:430px; text-align:center; }
+.booking-panel-success form { width:100%; }
+.booking-request-success { max-width:620px; margin:0 auto; padding:36px 20px; }
+.booking-request-success h1 { font-size:clamp(2rem,4vw,3.5rem); margin:20px 0; }
+.booking-request-success p { margin:12px 0; line-height:1.6; }
+.booking-success-icon { display:grid; place-items:center; width:66px; height:66px; margin:0 auto; border-radius:50%; background:#e8dce3; color:#63324d; font-size:32px; }
+.booking-success-home { display:inline-block; margin-top:22px; padding:12px 24px; border-radius:10px; background:#63324d; color:white; }
+.visitor-booking-page .booking-layout { display:block; max-width:740px; margin-inline:auto; }
+.visitor-booking-page .booking-panel { width:100%; }
+.visitor-booking-page #booking-title { font-size:clamp(2rem,4vw,3.5rem); }
+.visitor-client-fields { display:grid; gap:20px; margin-block:28px; }
+.visitor-client-fields label,.visitor-service-fields label { display:block; font-weight:500; }
+.visitor-client-fields input,.visitor-service-fields input { margin-top:9px; }
+.visitor-service-fields { display:grid; gap:18px; }
+.visitor-booking-page select { display:block; width:100%; margin-top:9px; padding:12px; border:1px solid #dfd2d9; border-radius:9px; background:#fffdfb; color:#2c222c; }
+.visitor-additional { margin-block:30px; padding:22px; border:1px solid #dfd2d9; border-radius:16px; }
+.visitor-additional h2 { font-size:1.2rem; margin-bottom:10px; }
+.visitor-additional>p { font-size:.875rem; color:#796973; margin-bottom:18px; }
+.visitor-extra-service { padding:18px; margin-block:18px; background:#fffdfb; border:1px solid #e8dce3; border-radius:12px; }
+.visitor-extra-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; }
+.visitor-extra-heading h3 { font-weight:600; }.visitor-extra-heading button { color:#63324d; text-decoration:underline; cursor:pointer; }
+.visitor-extra-service>.field-label { display:block; margin-bottom:18px; }
+@media(max-width:540px) {.visitor-additional { padding:16px; }.visitor-extra-service { padding:12px; }}
+/* Keep every visitor field on the same centered column. */
+.visitor-booking-page .booking-layout { max-width:760px; padding:24px 24px 64px; }
+.visitor-booking-page .booking-panel { box-sizing:border-box; max-width:680px; margin-inline:auto; padding:32px 36px; border:1px solid #e5dbe0; border-radius:20px; background:#fffdfb; box-shadow:0 10px 32px #4b2b3e06; }
+.visitor-booking-page #booking-title { margin:0 0 14px; font-size:clamp(1.875rem,3vw,2.625rem); line-height:1.15; }
+.visitor-booking-page .intro { margin:0 0 28px; font-size:1rem; line-height:1.65; color:#796973; }
+.visitor-booking-page form { min-width:0; }
+.visitor-booking-page .public-booking-date { box-sizing:border-box; width:100%; max-width:none; padding:16px; background:#f8f4f1; }
+.visitor-booking-page .visitor-client-fields { gap:20px; margin:0 0 24px; }
+.visitor-booking-page .visitor-client-fields label,.visitor-booking-page .field-label { margin:0; font-size:.9375rem; font-weight:600; }
+.visitor-booking-page input,.visitor-booking-page select { box-sizing:border-box; width:100%; min-height:48px; font-size:1rem; border-radius:10px; }
+.visitor-booking-page .public-booking-bs-fields select { margin-top:0; padding:10px 8px; min-height:44px; }
+.visitor-booking-page .public-booking-date .field-help { margin-bottom:0; font-size:.8125rem; color:#796973; }
+.visitor-booking-page .visitor-service-fields { gap:20px; }
+.visitor-booking-page .visitor-service-fields>.field-label:first-child { margin-bottom:-10px; }
+.visitor-booking-page .visitor-extra-service>.field-label { margin-bottom:20px; }
+.visitor-booking-page .booking-button { width:100%; min-height:48px; margin-top:12px; }
+.visitor-booking-page .booking-panel-success { min-height:440px; }
+@media(max-width:540px) {
+ .visitor-booking-page .booking-layout { padding:12px 16px 40px; }
+ .visitor-booking-page .booking-panel { padding:26px 20px; border-radius:16px; }
+ .visitor-booking-page .public-booking-date { padding:12px; }
+ .visitor-booking-page .public-booking-bs-fields { gap:6px; grid-template-columns:1fr 1.35fr .75fr; }
+}
+
+.booking-success-icon { background:transparent; }
+.booking-success-icon svg { display:block; width:100%; height:100%; overflow:visible; }
+.booking-success-ring { fill:#e8dce3; transform-origin:32px 32px; animation:booking-success-pop .45s cubic-bezier(.2,.8,.2,1) both; }
+.booking-success-check { stroke:#63324d; stroke-width:4; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:46; stroke-dashoffset:46; animation:booking-success-draw .5s ease-out .25s forwards; }
+@keyframes booking-success-pop { from { opacity:0; transform:scale(.65); } to { opacity:1; transform:scale(1); } }
+@keyframes booking-success-draw { to { stroke-dashoffset:0; } }
+@media(prefers-reduced-motion:reduce) { .booking-success-ring,.booking-success-check { animation:none; }.booking-success-check { stroke-dashoffset:0; } }
