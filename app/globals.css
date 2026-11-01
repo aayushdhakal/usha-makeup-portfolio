@@ -355,7 +355,8 @@ html { scroll-behavior:smooth; }
 .usha-testimonial-card.is-active { z-index:1; }
 .usha-testimonial-card.is-active .usha-testimonial-surface { border-color:#cdb3c0; box-shadow:0 18px 40px #4b2b3e1a; transform:scale(1.04); opacity:1; }
 .usha-testimonial-number { color:#aa8796; font-size:.75rem; letter-spacing:.15em; }
-.usha-testimonial-card blockquote { margin:31px 0 36px; color:#30232e; font-size:clamp(1.25rem,1.7vw,1.5rem); line-height:1.45; letter-spacing:-.02em; }
+.usha-testimonial-quote { display:block; height:48px; margin-bottom:12px; color:#9a6479; font-family:Georgia,serif; font-size:80px; font-weight:700; line-height:1; }
+.usha-testimonial-card blockquote { white-space:pre-wrap; overflow-wrap:anywhere; margin:0 0 36px; color:#30232e; font-size:clamp(1.25rem,1.7vw,1.5rem); line-height:1.45; letter-spacing:-.02em; }
 .usha-testimonial-person { display:flex; align-items:center; gap:12px; margin-top:auto; }
 .usha-testimonial-person>span { display:grid; place-items:center; flex:none; width:41px; height:41px; border-radius:50%; background:#e8d9e0; color:#573248; font-size:.8125rem; font-weight:700; }
 .usha-testimonial-person strong,.usha-testimonial-person small { display:block; }
@@ -865,8 +866,6 @@ html { scroll-behavior:smooth; }
 }
 
 /* Offer artwork retains its full original proportions at every screen size. */
-.usha-offer { width:100%; padding-block:clamp(24px,4vw,56px); background:#f8f4f1; }
-.usha-offer img { display:block; width:100%; height:auto; object-fit:contain; }
 
 .academy-card-price { margin:16px 0 4px; color:#8a506c; font-size:2rem; line-height:1.2; }
 .academy-price-note { color:#877781; font-size:.8rem; }
@@ -891,3 +890,6 @@ html { scroll-behavior:smooth; }
 .academy-registration-records article { border:1px solid #e2d5da; border-radius:12px; padding:22px; }
 .academy-registration-records p { margin:10px 0; overflow-wrap:anywhere; }
 @media(max-width:540px) { .academy-registration { padding:24px 20px; border-radius:18px; } .academy-registration-fields { grid-template-columns:1fr; } .academy-registration h2 { font-size:1.9rem; } }
+
+.academy-course-actions { display:flex; margin:0 0 24px; }
+@media(max-width:540px) { .academy-course-actions a { width:100%; text-align:center; } }

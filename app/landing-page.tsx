@@ -11,11 +11,26 @@ import { portfolioCategories } from "@/lib/portfolio";
 const categoryLabels = ["Bridal", "Reception", "Engagement", "Mehendi", "Wedding shoot", "Special occasion"];
 const featuredMakeovers = portfolioCategories.filter((category) => !category.preview);
 const testimonials = [
-  { name: "Anisha Shrestha", occasion: "Bridal makeup", quote: "I felt comfortable sharing the look I wanted. The finished makeup felt like me, just a little more polished." },
-  { name: "Prakriti Rai", occasion: "Reception makeup", quote: "The getting-ready experience felt calm and thoughtful. I loved how the makeup worked with my outfit." },
-  { name: "Srijana Gurung", occasion: "Engagement makeup", quote: "My look felt fresh in photos, and I felt confident throughout the celebration." },
-  { name: "Samiksha Thapa", occasion: "Mehendi makeup", quote: "I brought a few ideas with me, and the final look came together beautifully." },
-  { name: "Nisha Karki", occasion: "Special occasion makeup", quote: "I wanted something soft for my day. The result felt effortless and still felt like me." },
+  {
+    "id": "client-review-1",
+    "quote": "I’ll recommend you to everyone who ever asks me about makeup or makeup classes 🥰 because you truly deserve all the love and praise🫶No matter where I go, I’ll always come back to you for every special function when I return from Australia. You and your team are simply the best, sis, and I’m so thankful for your magic❤️😍"
+  },
+  {
+    "id": "client-review-2",
+    "quote": "Thankyou so much ❤️\nYeti dherai compliments paye maile makeup ra hair ko🥺\nAll thanks to you guys for making my day more special❤️"
+  },
+  {
+    "id": "client-review-3",
+    "quote": "Thank you  so much for making me feel like the most beautiful bride on my special day. I’ll forever be grateful for your magic hands .\nBest decision ever, thank you ❤️❤️"
+  },
+  {
+    "id": "client-review-4",
+    "quote": "Hi, just want to thank you and your team for your amazing work and for managing your availability on such short notice. I truly appreciate your effort ❤️❤️"
+  },
+  {
+    "id": "client-review-5",
+    "quote": "Thank you so much for my two beautiful reception looks. Everyone complimented a lot about those looks. My husband is in awe of the royal look. Thank you for bringing my vision into the perfect reality. Please convey my thankfulness to the hairstylist as well. ❤️"
+  }
 ];
 
 export default function LandingPage() {
@@ -169,10 +184,6 @@ export default function LandingPage() {
         <a className="usha-scroll-link" href="#works" aria-label="Scroll to our makeovers"><ArrowDown size={16} /></a>
       </section>
 
-      <section className="usha-offer" aria-label="Dashain offer">
-        <img src="/dashain-offer.webp" width="4000" height="1177" alt="Dashain offer: 3-Day Self-Makeup Class, Only Rs. 3,000. Day 1: Basic skin care / skin type, base makeup (everyday makeup), products / brushes information. Day 2: Soft glam party look. Day 3: Party makeup (Bold)." loading="lazy" />
-      </section>
-
       <section className="usha-makeovers" id="works" aria-labelledby="works-title">
         <div className="usha-section-heading">
           <h2 id="works-title">Makeovers <strong>we create.</strong></h2>
@@ -213,26 +224,24 @@ export default function LandingPage() {
 
       <section className="usha-testimonials" aria-labelledby="testimonials-title">
         <div className="usha-testimonials-heading">
-          <div><p className="usha-testimonials-kicker">Sample testimonials</p><h2 id="testimonials-title">What Our <strong>Clients Say</strong></h2></div>
-          <span className="usha-testimonials-count">{String(testimonialIndex + 1).padStart(2, "0")} / {String(testimonials.length).padStart(2, "0")}</span>
+          <div><h2 id="testimonials-title">What Our <strong>Clients Say</strong></h2></div>
         </div>
         <div className="usha-testimonials-viewport" ref={testimonialViewport}>
-        <div className="usha-testimonials-track" ref={testimonialTrack} role="region" aria-label="Example testimonials, scroll horizontally" tabIndex={0} onScroll={updateSelectedTestimonial} onKeyDown={(event) => {
+        <div className="usha-testimonials-track" ref={testimonialTrack} role="region" aria-label="Client testimonials, scroll horizontally" tabIndex={0} onScroll={updateSelectedTestimonial} onKeyDown={(event) => {
           if (event.target !== event.currentTarget || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
           event.preventDefault();
           selectTestimonial(isPhone ? (testimonialIndex + (event.key === "ArrowRight" ? 1 : -1) + testimonials.length) % testimonials.length : Math.max(0, Math.min(testimonials.length - 1, testimonialIndex + (event.key === "ArrowRight" ? 1 : -1))));
         }}>
-          {testimonials.map((testimonial, index) => <article className={`usha-testimonial-card${index === testimonialIndex ? " is-active" : ""}`} key={testimonial.name}>
+          {testimonials.map((testimonial, index) => <article className={`usha-testimonial-card${index === testimonialIndex ? " is-active" : ""}`} key={testimonial.id}>
             <div className="usha-testimonial-surface">
-              <span className="usha-testimonial-number">{String(index + 1).padStart(2, "0")}</span>
-              <blockquote>“{testimonial.quote}”</blockquote>
-              <div className="usha-testimonial-person"><span aria-hidden="true">{testimonial.name.split(" ").map((part) => part[0]).join("")}</span><div><strong>{testimonial.name}</strong><small>{testimonial.occasion}</small></div></div>
+              <span className="usha-testimonial-quote" aria-hidden="true">“</span>
+              <blockquote>{testimonial.quote}</blockquote>
+              <div className="usha-testimonial-person"><strong>Client</strong></div>
             </div>
           </article>)}
         </div>
         </div>
         <div className="usha-testimonials-controls"><span>Swipe to read more</span><button type="button" aria-label="Previous testimonial" disabled={!isPhone && testimonialIndex === 0} onClick={() => selectTestimonial(testimonialIndex - 1)}><ArrowLeft size={17} /></button><button type="button" aria-label="Next testimonial" disabled={!isPhone && testimonialIndex === testimonials.length - 1} onClick={() => selectTestimonial(testimonialIndex + 1)}><ArrowRight size={17} /></button></div>
-        <p className="usha-testimonials-note">Example reviews shown for layout preview.</p>
       </section>
 
       <PageFaq id="home-questions" title="Makeup Questions" mobileTitle="Frequently Asked Questions" items={homeFaq} />

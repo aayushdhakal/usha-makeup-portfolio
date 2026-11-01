@@ -17,6 +17,7 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
     <div className="academy-content">
       <a className="academy-back" href="/academy">← All courses</a>
       <section className="academy-intro"><p className="academy-eyebrow">Usha Academy</p><h1>{course.title}</h1></section>
+      <div className="academy-course-actions"><a className="academy-course-details" href={`/courses/${course.slug}.pdf`} download>Download course PDF</a></div>
       <section className="academy-curriculum" aria-labelledby="course-curriculum-title">
         <div className="academy-curriculum-heading"><div><p className="academy-eyebrow">What you will learn</p><h2 id="course-curriculum-title">Course curriculum</h2></div><span className="academy-day-count">{course.days} days</span></div>
         <ol className="academy-lesson-list">{course.lessons.map((lesson, index) => <li key={index}><span className="academy-lesson-day">{course.category === "hair" ? `Day ${index + 1}` : String(index + 1).padStart(2, "0")}</span><span>{lesson}</span></li>)}</ol>
