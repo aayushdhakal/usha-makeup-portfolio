@@ -14,7 +14,8 @@
     "lint": "eslint . --ignore-pattern .next --ignore-pattern out"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "nepali-date-converter": "^3.4.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.2.1",
